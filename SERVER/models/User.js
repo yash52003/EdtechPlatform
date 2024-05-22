@@ -1,68 +1,64 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-
-    firstName:{
-        type:String,
-        required:true,
-        trim:true,
+    firstName: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 50
     },
 
-    lastName:{
-       type:String,
-       required:true,
-       trim:true, 
+    lastName: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 50
     },
 
-    email:{
-        type:String,
-        required:true,
-        trim:true,
+    email: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true,
+        match: [/.+\@.+\..+/, 'Please fill a valid email address']
     },
 
-    password:{
-        type:String,
-        required:true,
+    password: {
+        type: String,
+        required: true,
+        minlength: 8
     },
 
-    confirmPassword:{
-        type:String,
-        required:true,
-    },
-
-    accountType:{
-        type:"String",
-        enum:["Admin" , "Student" , "Instructor"],
-        required : true,
+    accountType: {
+        type: String,
+        enum: ["Admin", "Student", "Instructor"],
+        required: true
     },
 
     additionalDetails: {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true,
-        ref : "Profile"
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Profile"
     },
 
-    courses : [
-        {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : "Course",
-        }
-    ],
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course"
+    }],
 
-    image:{
-        //We are Storing the image in the form of url 
-        type:String,
-        required:true,
+    image: {
+        type: String,
+        required: true,
+        match: [/^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$/, 'Please fill a valid image URL']
     },
 
-    courseProgress: [
-        {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : "CourseProgress",
-        }
-    ],
-
-
+    courseProgress: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "CourseProgress"
+    }]
+    
+}, {
+    timestamps: true
 });
 
-module.exports = mongoose.model("User" , userSchema);
+module.exports = mongoose.model("User", userSchema);

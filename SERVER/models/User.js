@@ -51,7 +51,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         match: [/^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$/, 'Please fill a valid image URL']
     },
-
+    token:{
+        type: String,
+    },
+    resetPasswordExpires:{
+        type: Date,
+    },
     courseProgress: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "CourseProgress"

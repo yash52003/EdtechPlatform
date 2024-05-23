@@ -208,7 +208,7 @@ exports.login = async (req , res) => {
             const payload = {
                 email : user.email,
                 id : user._id,
-                role : user.role,
+                role : user.accountType,
             }
 
             const token = jwt.sign(payload , process.env.JWT_SECRET , {
@@ -286,7 +286,7 @@ exports.changePassword = async (req , res) => {
     }else{
         return res.status(401).json({
             success : false,
-            message : "The newPassword and the confirmNewPassword doesn't matches please enter again";
+            message : "The newPassword and the confirmNewPassword doesn't matches please enter again"
         })
     }
     //send mail after the password is updated

@@ -13,10 +13,10 @@ const tagSchema = new mongoose.Schema({
         trim: true,
         maxlength: 500
     },
-    course: {
+    course: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Course"
-    }
+    }]
 }, {
     timestamps: true
 });

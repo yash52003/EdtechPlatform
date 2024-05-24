@@ -30,6 +30,7 @@ exports.createCourse = async (req , res) => {
       const userId = req.user.id;
       const instructorDetails = await User.findById(userId);
       console.log("Instructor Details" , instructorDetails);
+      //Todo - UserId and InstructorDetails.id are same or different 
 
       //Step 5 - If we don't get any data with respect to the user Id simply return the response 
       if(!instructorDetails){
@@ -101,4 +102,31 @@ exports.createCourse = async (req , res) => {
     }
 }
 
-//getAllCourses handler function
+//getAllCourses handler function - Show all courses
+exports.getAllCourses = async (req , res) => {
+  try{
+
+    const allCourses = await Course.find({} , {
+      courseName : true,
+      price : true,
+      thumbnail : true,
+      instructor : true,
+      ratingAndReview : true,
+      studentsEnrolled : true,
+    }).populate("instructor").exec();
+
+    return res.status(200).json({
+      success : true,
+      message : "Data for all courses fetched successfully",
+      data : allCourses,
+    });
+
+  }catch(error){
+    console.log(error);
+    return res.status(500).json({
+      success : false,
+      message : "Error in fetching all the courses",
+      error : error.message,
+    })
+  }
+}

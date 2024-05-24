@@ -27,6 +27,7 @@ exports.createCourse = async (req , res) => {
       //This is not the game of extra validation this is for the db
 
       //Step4 - cheak for instructor
+      //This is a useless db call we can simpl 
       const userId = req.user.id;
       const instructorDetails = await User.findById(userId);
       console.log("Instructor Details" , instructorDetails);

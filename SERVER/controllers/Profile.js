@@ -97,3 +97,8 @@ exports.deleteAccount = async (req ,res) => {
         })
     }
 }
+
+//Writing the get handler function for accessing all the details of the user
+exports.getAllUserDetails = async (req , res) => {
+    
+}

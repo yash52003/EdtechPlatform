@@ -55,3 +55,45 @@ exports.updateProfile = async  (req  , res) => {
         })
     }
 }
+
+//Now lets write down the delete account handler 
+exports.deleteAccount = async (req ,res) => {
+    try{
+        //Delete the profile and the user - Fetch the id whose account is to be deleted
+        const id = req.user.id;
+
+        //Do the validation of the id
+        const userDetails = await User.findById(id);
+        if(!userDetails){
+            return res.status(404).json({
+                success : false,
+                message : "User not found",
+            })
+        }
+
+        //First delete the profile of the user 
+        await Profile.findOneAndDelete({_id : userDetails.additionalDetails});
+
+        //Delete the User 
+        await User.findOneAndDelete(id);
+        //HW : Todo - Unenroll the user from all the enrolled courses and then delete
+
+        //Return the response
+        //We just want to give the simple success response 
+        return res.status(200).json({
+            success : true,
+            message : "User Deleted Sucessfully",
+        })
+
+
+        //How can we schedule this task of deleting the account
+
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            success : false,
+            message : "Got and error in Deleting the Profile",
+            error : error.message,
+        })
+    }
+}

@@ -48,3 +48,42 @@ exports.createSection = async (req , res) => {
         })
     }
 }
+
+exports.updateSection = async (req , res) => {
+    try{
+        //Step1 - Take the data in the input
+        
+        const {sectionId  , sectionName}  = req.body;
+
+        //Step2 - Do the validation of the data
+        if(!sectionName || !sectionId){
+            return res.status(400).json({
+                success : false,
+                message : "Missiong Properties Please Fill the details again and carefully",
+            })
+        }
+
+        //Step3 - Update the data 
+        const updateSectionDetails = await Section.findByIdAndUpdate(sectionId , 
+        {sectionName},
+        {new : true,}
+        );
+
+
+        //Step4 - Return the response 
+        return res.status(400).json({
+            success : true,
+            message : "Section Updated Successfully",
+        });
+
+
+    }catch(error){
+
+        return res.status(500).json({
+            success : false,
+            message : "Unable to update the section , Please try again",
+            error : error.message,
+        })
+
+    }
+};

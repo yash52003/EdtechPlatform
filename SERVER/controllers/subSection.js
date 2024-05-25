@@ -68,7 +68,5 @@ exports.createSubSection = async (req, res) => {
 
 
 
-
-
 //Hw : deleteSection
 

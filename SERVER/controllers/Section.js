@@ -87,3 +87,37 @@ exports.updateSection = async (req , res) => {
 
     }
 };
+
+exports.deleteSection = async (req , res) => {
+    try{
+
+    //Fetch the data - get the section data 
+    const {sectionId} = req.params;
+
+    //validate the id
+    if(!sectionId){
+
+        return res.status(400).json({
+            success : false,
+            message : "The sectionID not available please fill out the details properly",
+        });
+
+    }
+
+    //Find by id and delete 
+    await Section.findByIdAndDelete(sectionId);
+
+    //return the response
+    return res.status(200).json({
+        success : true,
+        message : "Successfully Deleted the Section",
+    })
+
+    }catch(error){
+        return res.status(500).json({
+            success : false,
+            message : "Unable to delete the section , please try again",
+            error : error.message
+        })
+    }
+};

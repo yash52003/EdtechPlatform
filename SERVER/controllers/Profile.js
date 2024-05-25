@@ -100,5 +100,44 @@ exports.deleteAccount = async (req ,res) => {
 
 //Writing the get handler function for accessing all the details of the user
 exports.getAllUserDetails = async (req , res) => {
-    
+
+    try{
+       //To get the user all the  details we require the id we get the id easily from the request as the user is logged in 
+       //Step 1 - Get the user ID
+       const id = req.user.id;
+
+        //Step 2 - Do the validation and get the userDetails
+        if(!id){
+            return res.status(404).json({
+                success : false;
+                message : "The id is not approriate"
+            })
+        }
+        
+        //Make a db call to get all the details
+        const userDetails = User.findById(id).populate("additionalDetails").exec();
+        //Specifically we have populated the details of the user 
+
+       //Return the response
+       return res.status(200).json({
+        success : true,
+        message : "User Data Fetched Successfully",
+       });
+
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            success : false,
+            message : error.message,
+        })
+    }
+
 }
+
+
+
+/*
+GetcourseDetails
+GetSectionDetails
+GetSubSectionDetails
+*/

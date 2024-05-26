@@ -170,7 +170,6 @@ exports.signup = async (req , res) => {
 }
 
 //Login 
-
 exports.login = async (req , res) => {
 
     try{
@@ -256,7 +255,7 @@ exports.login = async (req , res) => {
 
 };
 
-//ChangePassword : TODO - Homework Changepasswor
+//ChangePassword : TODO - Homework Changepassword
 exports.changePassword = async (req , res) => {
     //get data from the req body
     //get oldPassword , newPassword , confirmNewPassword

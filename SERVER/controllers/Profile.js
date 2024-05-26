@@ -109,7 +109,7 @@ exports.getAllUserDetails = async (req , res) => {
         //Step 2 - Do the validation and get the userDetails
         if(!id){
             return res.status(404).json({
-                success : false;
+                success : false,
                 message : "The id is not approriate"
             })
         }
@@ -133,8 +133,6 @@ exports.getAllUserDetails = async (req , res) => {
     }
 
 }
-
-
 
 /*
 GetcourseDetails

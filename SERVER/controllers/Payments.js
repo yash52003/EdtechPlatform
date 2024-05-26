@@ -107,10 +107,73 @@ exports.verifySignature = async (req , res) => {
 
         if(signature == digest){
             console.log("payment is authorised");
+
+            //First thing is we want the userId and the courseId from the user 
+            const {userId , courseId} = req.body.payload.payment.entity.notes;
+
+            try{
+                //No validation is required as id we have pushed by our own after doing the verification
+
+                //Fullfill the action make the student enrolled in the course
+                const enrolledCourse = await Course.findOneAndUpdate(
+                    {_id : courseId}, 
+                    { $push : {studentsEnrolled : userId},},
+                    {new : true},
+                );
+
+                if(!enrolledCourse){
+                    return res.status(500).json({
+                        success : false,
+                        message : "Course not Found",
+                    });
+                }
+
+                console.log(enrolledCourse);
+
+                //Find the student and the course in the list of the enrolled courses
+                const enrolledStudent = await User.findOneAndUpdate(
+                    {_id : userId},
+                    {$push : {courses : courseId}},
+                    {new : true},
+                );
+
+                console.log(enrolledStudent);
+
+                //Send the course enrollment mail to the user -- Mail Send {We want to send the confirmation mail}
+
+                const emailResponse = await mailSender(
+                    enrolledStudent.email,
+                    "Congratulations to the codeCircle",
+                    "Congratulations, You are onboarded into the new Codehelp Course",
+                );
+
+                console.log(emailResponse);
+                return res.status(200).json({
+                    success : true,
+                    message : "Signature verified and the course Added",
+                });
+
+            }catch(error){
+                console.log(error);
+                return res.status(500).json({
+                    success : false,
+                    message : error.message,
+                });
+            }
+
+        }
+        else{
+            return res.status(400).json({
+                success : false,
+                message : "Invalid request",
+            });
         }
 
     }catch(error){
-
+        return res.status(500).json({
+            success : false,
+            message : "Error in verification of the signature",
+        })
     }
 }
 

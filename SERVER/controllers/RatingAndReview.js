@@ -85,14 +85,91 @@ exports.getAverageRating = async (req , res) => {
         const courseID = req.body.courseId;
 
         //Db se call maro and calculate the average rating
-        //In the aggregate function 
-        const result = await RatingAndReview.aggregate()
+        //In the aggregate function - we specify some steps on which it will work
+        const result = await RatingAndReview.aggregate([
+            {
+                $match:{
+                    course : new mongoose.Types.ObjectId(courseId),
+                },
+            },
+            {
+                $group:{
+                    _id : null,
+                    averageRating : {$avg : "$rating"},
+                }
+            },
+
+        ])
 
         //return rating
-    }catch(error){
+        if(result.length > 0){
+            return res.status(200).json({
+                success : true,
+                averageRating : result[0].averageRating,
+            })
+        }
 
+        //If no rating and review exists 
+        return res.status(200).json({
+            success : true,
+            message : "Average rating is 0 No ratings given till now",
+            averageRating : 0,
+        })
+
+
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            success : false,
+            message : "Error in getting the Average Rating of all the Reviews",
+        })
     }
 }
 
 
-//getAllRating
+//getAllRating 
+exports.getAllRatingandReviews = async (req , res) => {
+    try{
+        //Just make a find call and return whatever you are getting 
+
+        const allReviews = await RatingAndReview.find({})
+        .sort({rating:"desc"})
+        .populate({
+            path : "user",
+            select : "firstName lastName email image",
+        })
+        .populate({
+            path : "course",
+            select : "courseName",
+        })
+        .exec();
+
+
+        return res.status(200).json({
+            success : true,
+            meesage : "All review fetch successfully",
+            data: allReviews,
+        })
+
+
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            success : false,
+            message : "Error in getting all the ratings"
+        })
+    }
+}
+
+
+//HW - get the rating review corresponding the courseID
+/*
+        //fetch the courseId 
+        const courseId = req.user.courseId;
+
+        //associated to that course we have the id - rating and review array we will need a populate function
+
+
+        //return the successResponse
+
+*/

@@ -103,7 +103,7 @@ exports.isAdmin = async (req , res , next) => {
     }catch(error){
         res.status(500).json({
             success : false,
-            message : "User role cannot be verifie , please try again",
+            message : "User role cannot be verified , please try again",
         });
     }
 

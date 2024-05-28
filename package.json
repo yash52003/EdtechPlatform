@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "cloudinary": "^2.2.0",
-    "razorpay": "^2.9.4"
-  }
-}

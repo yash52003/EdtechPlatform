@@ -21,7 +21,7 @@ const courseSchema = new mongoose.Schema({
     whatYouWillLearn: {
         type: String,
         trim: true,
-        maxlength: 1000
+        maxlength: 1000,
     },
     courseContent: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -41,15 +41,27 @@ const courseSchema = new mongoose.Schema({
         trim: true
     },
     tags: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Tag"
+        type: [String],
+        required : true,
     }],
+    category:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Category",
+    },
     studentsEnrolled: [{
         type: mongoose.Schema.Types.ObjectId,
+        required : true,
         ref: "User"
-    }]
-}, {
-    timestamps: true
+        },
+    ],
+    instructions: {
+        type: [String],
+      },
+    status: {
+        type: String,
+        enum: ["Draft", "Published"],
+    },
+    createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Course", courseSchema);

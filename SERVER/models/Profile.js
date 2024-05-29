@@ -14,12 +14,11 @@ const profileSchema = new mongoose.Schema({
     about: {
         type: String,
         trim: true,
-        maxlength: 500,
     },
     contactNumber: {
         type: String,
         trim: true,
-        match: [/^\d{10}$/, 'Please fill a valid 10-digit contact number']
+        match: [/^\d{10}$/, 'Please fill a valid 10-digit contact number'],
     }
 });
 

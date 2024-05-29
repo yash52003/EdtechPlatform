@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+    {
+
     firstName: {
         type: String,
         required: true,
         trim: true,
-        maxlength: 50
     },
 
     lastName: {
         type: String,
         required: true,
         trim: true,
-        maxlength: 50
     },
 
     email: {
@@ -35,28 +35,43 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
+    active: {
+        type: Boolean,
+        default: true,
+    },
+
+    approved: {
+        type: Boolean,
+        default: true,
+    },
+
     additionalDetails: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "Profile"
     },
 
-    courses: [{
+    courses: [
+        {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Course"
-    }],
+        ref: "Course",
+        }
+    ],
 
     image: {
         type: String,
         required: true,
-        match: [/^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$/, 'Please fill a valid image URL']
+        // match: [/^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$/, 'Please fill a valid image URL']
     },
+
     token:{
         type: String,
     },
+
     resetPasswordExpires:{
         type: Date,
     },
+
     courseProgress: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "CourseProgress"

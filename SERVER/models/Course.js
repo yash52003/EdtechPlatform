@@ -5,13 +5,11 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: 100
     },
     courseDescription: {
         type: String,
         required: true,
         trim: true,
-        maxlength: 500
     },
     instructor: {
         type: mongoose.Schema.Types.ObjectId,
@@ -21,7 +19,6 @@ const courseSchema = new mongoose.Schema({
     whatYouWillLearn: {
         type: String,
         trim: true,
-        maxlength: 1000,
     },
     courseContent: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -29,7 +26,7 @@ const courseSchema = new mongoose.Schema({
     }],
     ratingAndReviews: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "RatingsandReview"
+        ref: "RatingsAndReview"
     }],
     price: {
         type: Number,

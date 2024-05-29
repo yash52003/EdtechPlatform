@@ -16,10 +16,7 @@ const ratingAndReviewSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: 1000
-    }
-}, {
-    timestamps: true
+    },
 });
 
-module.exports = mongoose.model("RatingandReview", ratingAndReviewSchema);
+module.exports = mongoose.model("RatingAndReview", ratingAndReviewSchema);

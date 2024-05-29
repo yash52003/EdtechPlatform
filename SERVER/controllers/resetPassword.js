@@ -1,6 +1,7 @@
 const User  = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto")
 
 //resetPasswordToken
 //This function has the job of sending the Frontend ui link to the user on his mail
@@ -17,7 +18,7 @@ exports.resetPasswordToken = async (req , res) => {
             })
         }
 
-        const user = await User.findOne({email});
+        const user = await User.findOne({email : email});
 
         if(!user){
             return res.status(402).json({
@@ -27,13 +28,23 @@ exports.resetPasswordToken = async (req , res) => {
         }
 
         //geenerate token - this token needs to have an expiration time for which the link is been valid crytp library
-        const token = crypto.randomUUID();
+        // const token = crypto.randomUUID();
+        const token = crypto.randomBytes(20).toString("hex")
 
         //update user by adding the token and the expiration time
-        const updatedDetails = await User.findOneAndUpdate({email : email} , {
-            token : token ,
-            resetPasswordExpires : Date.now() + 5*60*1000,
-        } , {new:true});
+        // const updatedDetails = await User.findOneAndUpdate({email : email} , {
+        //     token : token ,
+        //     resetPasswordExpires : Date.now() + 5*60*1000,
+        // } , {new:true});
+        const updatedDetails = await User.findOneAndUpdate(
+            { email: email },
+            {
+              token: token,
+              resetPasswordExpires: Date.now() + 3600000,
+            },
+            { new: true }
+          )
+        console.log("DETAILS", updatedDetails)
 
         //Create URL
         //If user exits : generate the link
@@ -41,9 +52,15 @@ exports.resetPasswordToken = async (req , res) => {
 
         //Send Mail containing the URL 
         //Lets send the mail 
-        await mailSender(email , "Password reset Link" ,  
-        `Password reset Link : ${url}`
-        );
+        // await mailSender(email , "Password reset Link" ,  
+        // `Password reset Link : ${url}`
+        // );
+
+        await mailSender(
+            email,
+            "Password Reset",
+            `Your Link for email verification is ${url}. Please click this url to reset your password.`
+        )
 
         //Return response
         return res.json({
@@ -55,6 +72,7 @@ exports.resetPasswordToken = async (req , res) => {
     }catch(error){
         console.log(error);
         return res.status(500).json({
+            error : error.message,
             success : false,
             message : "Somethign went wrong in the reset Password Functionality",
         })
@@ -85,7 +103,7 @@ exports.resetPassword = async (req , res) => {
         }
 
         //use the token and take out the user entry from the database
-        const userDetails = await User.findOne({token});
+        const userDetails = await User.findOne({token : token});
 
         if(!userDetails){
             return res.json({
@@ -95,7 +113,7 @@ exports.resetPassword = async (req , res) => {
         }
 
         //If no entry invalid token return the response  and cheak for the token time
-        if(userDetails.resetPasswordExpires < Date.now()){
+        if(userDetails.resetPasswordExpires > Date.now()){
             //It means the token has expired
             return res.status(500).json({
                 success : false,
@@ -107,7 +125,7 @@ exports.resetPassword = async (req , res) => {
         const hashedPassword = await bcrypt.hash(password , 10);
 
         //Update the user entry database password for that purpose first hash the password 
-        await User.findOneAndUpdate({token} , {
+        await User.findOneAndUpdate({token : token} , {
             password : hashedPassword,
         } , {new:true});
 
@@ -121,13 +139,12 @@ exports.resetPassword = async (req , res) => {
         })
 
     }catch(error){
-
-        console.log(error);
-        return res.status(500).json({
+    console.log(error);
+    return res.status(500).json({
+            error : error.message,
             success : false,
             message : "There was and error in reseting the password",
-        });
-
+      });
     }
 };
 

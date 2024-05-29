@@ -30,7 +30,13 @@ exports.createSection = async (req , res) => {
                 }
             },
             {new : true},
-    ).populate("");
+    ).populate({
+            path: "courseContent",
+            populate: {
+              path: "subSection",
+            },
+          })
+          .exec();
 
     //Step5 - return the success response
     return res.status(200).json({
@@ -53,10 +59,10 @@ exports.updateSection = async (req , res) => {
     try{
         //Step1 - Take the data in the input
         
-        const {sectionId  , sectionName}  = req.body;
+        const {sectionId  , sectionName , courseId}  = req.body;
 
         //Step2 - Do the validation of the data
-        if(!sectionName || !sectionId){
+        if(!sectionName || !sectionId || !courseId){
             return res.status(400).json({
                 success : false,
                 message : "Missiong Properties Please Fill the details again and carefully",
@@ -69,16 +75,28 @@ exports.updateSection = async (req , res) => {
         {new : true,}
         );
 
+        const course = await Course.findById(courseId)
+        .populate({
+          path: "courseContent",
+          populate: {
+            path: "subSection",
+          },
+        })
+        .exec()
+        console.log(course);
+
 
         //Step4 - Return the response 
         return res.status(400).json({
             success : true,
             message : "Section Updated Successfully",
+            data : course,
         });
 
 
     }catch(error){
 
+        console.error("Error updating section:", error)
         return res.status(500).json({
             success : false,
             message : "Unable to update the section , Please try again",
@@ -90,9 +108,9 @@ exports.updateSection = async (req , res) => {
 
 exports.deleteSection = async (req , res) => {
     try{
-
     //Fetch the data - get the section data 
-    const {sectionId} = req.params;
+    // const {sectionId , courseId} = req.params;
+    const { sectionId, courseId } = req.body;
 
     //validate the id
     if(!sectionId){

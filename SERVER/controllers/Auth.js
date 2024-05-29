@@ -3,6 +3,8 @@ const OTP = require("../models/OTP");
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const {passwordUpdated} = require("../mail/templates/passwordUpdate");
+const Profile = require("../models/Profile");
 require("dotenv").config();
 
 //SendOTP
@@ -19,7 +21,7 @@ exports.sendOTP = async (req ,res) => {
         return res.status(401).json({
             success : false,
             message : "User already registered",
-        })
+        });
     }
 
     //Step4 - Generate OTP
@@ -29,19 +31,22 @@ exports.sendOTP = async (req ,res) => {
         specialChars : false,
     }) ;
 
-    console.log("OTP generated" , otp);
-
     //Step 5 - I want the otp to be unique
     const result = await OTP.findOne({otp : otp});
+
+    console.log("Result is Generate OTP Func");
+    console.log("OTP generated" , otp);
+    console.log("Result" , result);
+
 
     while(result){
         otp = otpGenerator.generate(6 , {
             upperCaseAlphabets: false,
-            lowerCaseAlphabets : false,
-            specialChars : false,
+            // lowerCaseAlphabets : false,
+            // specialChars : false,
         }) ;
 
-        result = await OTP.findOne({otp : otp});
+        // result = await OTP.findOne({otp : otp});
     }
 
     //Step6 - create the otp object and make its unique entry in the database
@@ -49,7 +54,7 @@ exports.sendOTP = async (req ,res) => {
 
     //Create an entry in the database
     const otpBody = await OTP.create(otpPayLoad);
-    console.log(otpBody);
+    console.log("OTP BODY" , otpBody);
 
 
     //return response succesful
@@ -60,7 +65,7 @@ exports.sendOTP = async (req ,res) => {
     })
 
     }catch(error){
-        console.log(error);
+        console.log(error.message);
         res.status(500).json({
             success : false,
             message :  'User already exists',
@@ -74,10 +79,26 @@ exports.signup = async (req , res) => {
     try{
 
    //Step 1 - fetch the data from the request body
-   const {firstName , lastName ,  email , password , confirmPassword , accountType , contactNumber , otp} = req.body;
+   const {
+    firstName, 
+    lastName,  
+    email, 
+    password, 
+    confirmPassword,
+    accountType, 
+    contactNumber,
+    otp,
+    } = req.body;
 
    //Step2 - Do the validation of the data
-   if(!firstName || !lastName || !email || !password || !confirmPassword || !otp || !contactNumber){
+   if(
+    !firstName ||
+    !lastName || 
+    !email || 
+    !password || 
+    !confirmPassword || 
+    !otp
+    ){
        return res.status(403).json({
            success : false,
            message : "All fields are required",
@@ -88,7 +109,7 @@ exports.signup = async (req , res) => {
    if(password !== confirmPassword){
        return res.status(400).json({
            success : false,
-           message : "Password and ConfirmPassword Value doesnot match Please try again",
+           message : "Password and ConfirmPassword Value doesnot match, Please try again",
        })
    }
 
@@ -97,7 +118,7 @@ exports.signup = async (req , res) => {
    if(existingUser){
        return res.status(400).json({
            success : false,
-           message : "User is already registered",
+           message : "User is already registered. PLlease login to continue",
        })
    }
 
@@ -107,12 +128,13 @@ exports.signup = async (req , res) => {
 
    //Step6 - Do the validation of the otp {The Input OTP and the OTP which is stored in the database}
    if(recentOtp.length == 0){
-      //OTP not found
+      //OTP not found for the email
       return res.status(400).json({
        success : false,
-       message : "OTP not found",
+       message : "The OTP is not valid",
       })
-   } else if(otp !== recentOtp.otp){
+
+   } else if(otp !== recentOtp[0].otp){
        //Ifd the otp value don't matches then we are getting the invalid otp 
        return res.status(400).json({
            success : false,
@@ -131,6 +153,11 @@ exports.signup = async (req , res) => {
 
    //In the additional details we give the reference to the profileModel therefore we will need to create a profile before creating the entry into the database reference means we are giving the id of the object in the database that that is uniqurely assigned by the mongodb internally
 
+
+   //create the user
+   let approved= ""
+   approved === "Instructor" ? (approved = false) : (approved = true);
+
    const profileDetails = await Profile.create({
        gender : null,
        dataOfBirth : null,
@@ -145,8 +172,12 @@ exports.signup = async (req , res) => {
        email,
        contactNumber,
        password : hashedPassword , 
-       accountType : profileDetails._id,
-       image:  `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
+
+       accountType : accountType,
+       approved : approved,
+       additionalDetails : profileDetails._id,
+       image : "",
+    //    image:  `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
    })
 
    //Step10  - return the response
@@ -161,12 +192,9 @@ exports.signup = async (req , res) => {
         console.log(error);
         return res.status(500).json({
             success : false,
-            message : "User cannot be registerd Please try again",
+            message : "User cannot be registerd, Please try again",
         });
-
     }
-
- 
 }
 
 //Login 
@@ -211,7 +239,7 @@ exports.login = async (req , res) => {
             }
 
             const token = jwt.sign(payload , process.env.JWT_SECRET , {
-                expiresIn : "2h",
+                expiresIn : "24h",
             });
 
             //Making a attribute token in the user object as we want to send it to the frontend
@@ -230,7 +258,7 @@ exports.login = async (req , res) => {
                 success : true,
                 token,
                 user,
-                message : "User Loggedin Successfully",
+                message : "User Login Successfully",
             })
 
 
@@ -241,56 +269,83 @@ exports.login = async (req , res) => {
                 message : "Password is incorrect",
             })
         }
-
-
-    
     }catch(error){
         //If at any step there is an error;
         console.log(error);
-        return res.status(401).json({
+        return res.status(500).json({
             success : false,
             message : "Login Failure Please try again",
         })
     }
-
 };
 
 //ChangePassword : TODO - Homework Changepassword
 exports.changePassword = async (req , res) => {
-    //get data from the req body
-    //get oldPassword , newPassword , confirmNewPassword
-    const {email , oldPassword , newPassword , confirmNewPassword} = req.body;
-    //validation
-    
-        if(!oldPassword || !newPassword || !confirmNewPassword){
-            res.send(403).json({
-                success : false,
-                message : "All the fields are neccessary , Please try again",
-            })
-        }
+ try{
 
-    //update pwd in the database 
-    if(newPassword == confirmNewPassword){
-        const user = await User.findOne({email});
+  // Get user data from req.user
+  const userDetails = await User.findById(req.user.id)
 
-        const hashedPassword = await bcrypt.hash(password , 10);
+  // Get old password, new password, and confirm new password from req.body
+  const { oldPassword, newPassword } = req.body
 
-        user.password = hashedPassword ;
-        
-        //I  new to update the user details in the database forthat purpose I will need to use the Put crud operation
+  // Validate old password
+  const isPasswordMatch = await bcrypt.compare(
+    oldPassword,
+    userDetails.password
+  )
+  if (!isPasswordMatch) {
+    // If old password does not match, return a 401 (Unauthorized) error
+    return res
+      .status(401)
+      .json({ success: false, message: "The password is incorrect" })
+  }
 
+  // Update password
+  const encryptedPassword = await bcrypt.hash(newPassword, 10)
+  const updatedUserDetails = await User.findByIdAndUpdate(
+    req.user.id,
+    { password: encryptedPassword },
+    { new: true }
+  )
 
-
-
-    }else{
-        return res.status(401).json({
-            success : false,
-            message : "The newPassword and the confirmNewPassword doesn't matches please enter again"
-        })
-    }
     //send mail after the password is updated
+    //Sending the notification mail
+    try{
+        const emailResponse = await mailSender(
+            updatedUserDetails.email,
+            "Password for your account has been updated",
+            passwordUpdated(
+            updatedUserDetails.email,
+            `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`,
+            )
+        )
+        console.log("Email sent successfully:", emailResponse.response);
+    }catch(error){
+      // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
+      console.error("Error occurred while sending email:", error)
+      return res.status(500).json({
+        success: false,
+        message: "Error occurred while sending email",
+        error: error.message,
+      })
+    }
+
+    // Return success response
+    return res
+      .status(200)
+      .json({ success: true, message: "Password updated successfully" })
+
+    }catch(error){
     
+        console.error("Error occured while updating password: " , error);
     
+        return res.status(500).json({
+            success : false,
+            message : "Error occured while updating the password",
+            error : error.message,
+        })
+    }      
 }
 
 /*

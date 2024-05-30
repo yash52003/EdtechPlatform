@@ -1,9 +1,9 @@
-const SubSection = require("../models/Subsection");
+// Import necessary modules
 const Section = require("../models/Section");
+const SubSection = require("../models/Subsection");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
-require("dotenv").config;
 
-//Create subSection logic
+// Create a new sub-section for a given section
 exports.createSubSection = async (req, res) => {
     try {
       // Extract necessary information from the request body
@@ -50,13 +50,12 @@ exports.createSubSection = async (req, res) => {
         error: error.message,
       })
     }
-  };
-
-//HW - updateSubSection
-exports.updateSubSection = async (req, res) => {
+  }
+  
+  exports.updateSubSection = async (req, res) => {
     try {
-      const { sectionId, subSectionId, title, description } = req.body
-      const subSection = await SubSection.findById(subSectionId)
+      const { sectionId, title, description } = req.body
+      const subSection = await SubSection.findById(sectionId)
   
       if (!subSection) {
         return res.status(404).json({
@@ -84,17 +83,9 @@ exports.updateSubSection = async (req, res) => {
   
       await subSection.save()
   
-      // find updated section and return it
-      const updatedSection = await Section.findById(sectionId).populate(
-        "subSection"
-      )
-  
-      console.log("updated section", updatedSection)
-  
       return res.json({
         success: true,
         message: "Section updated successfully",
-        data: updatedSection,
       })
     } catch (error) {
       console.error(error)
@@ -103,10 +94,9 @@ exports.updateSubSection = async (req, res) => {
         message: "An error occurred while updating the section",
       })
     }
-  };
-
-//HW - deleteSection
-exports.deleteSubSection = async (req, res) => {
+  }
+  
+  exports.deleteSubSection = async (req, res) => {
     try {
       const { subSectionId, sectionId } = req.body
       await Section.findByIdAndUpdate(
@@ -125,15 +115,9 @@ exports.deleteSubSection = async (req, res) => {
           .json({ success: false, message: "SubSection not found" })
       }
   
-      // find updated section and return it
-      const updatedSection = await Section.findById(sectionId).populate(
-        "subSection"
-      )
-  
       return res.json({
         success: true,
         message: "SubSection deleted successfully",
-        data: updatedSection,
       })
     } catch (error) {
       console.error(error)
@@ -142,4 +126,4 @@ exports.deleteSubSection = async (req, res) => {
         message: "An error occurred while deleting the SubSection",
       })
     }
-  };
+  }

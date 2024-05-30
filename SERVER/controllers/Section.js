@@ -23,28 +23,22 @@ exports.createSection = async (req , res) => {
 
     //How to use the populate function as we need to populate the section as well as the subsection
     //HW : Use populate to replace sections./sub-sections both in the updatedCourseDetails
-    const updateCourseDetails = await Course.findByIdAndUpdate(
-            courseId,
-            {
-                $push:{
-                    courseContent : newSection._id,
-                }
-            },
-            {new : true},
-    ).populate({
-            path: "courseContent",
-            populate: {
-              path: "subSection",
-            },
-          })
-          .exec();
+      const updatedCourseDetails = await Course.findByIdAndUpdate(
+        courseId,
+        {
+            $push: {
+                courseContent: newSection._id,
+            }
+        },
+        { new: true }
+    ).populate('courseContent').populate('courseContent.subSection').exec();
 
-    //Step5 - return the success response
-    return res.status(200).json({
-        success : true,
-        message : "Section created Successfully",
-        updatedCourseDetails,
-    })
+      //Step5 - return the success response
+      return res.status(200).json({
+          success : true,
+          message : "Section created Successfully",
+          updatedCourseDetails,
+      })
 
     }catch(error){
         console.log(error);
@@ -153,5 +147,5 @@ exports.deleteSection = async (req, res) => {
         error: error.message,
       })
     }
-  }
+};
   

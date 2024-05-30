@@ -14,10 +14,10 @@ exports.sendOTP = async (req ,res) => {
     const {email} = req.body;
 
     //Step2 - Cheak wheather the user already exists in the database or not 
-    const existingUser = await User.findOne({email});
+    const existingUser = await User.findOne({email : email});
 
     //Step3 - If already user exists then return the response
-    if(exisitingUser){
+    if(existingUser){
         return res.status(401).json({
             success : false,
             message : "User already registered",
@@ -177,7 +177,7 @@ exports.signup = async (req , res) => {
        approved : approved,
        additionalDetails : profileDetails._id,
        image : "",
-    //    image:  `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
+       image:  `https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
    })
 
    //Step10  - return the response
@@ -213,7 +213,7 @@ exports.login = async (req , res) => {
         }
 
         //Step3 - Cheak if the user is already present in the database or not
-        const user = await User.findOne({email}).populate("addditionalDetails");
+        const user = await User.findOne({email}).populate("additionalDetails");
 
 
         //Step4 - If not a registered user then return the response
@@ -347,7 +347,3 @@ exports.changePassword = async (req , res) => {
         })
     }      
 }
-
-/*
-We making the signup and login functionality we will require some of the middlewares for the authorisation purposes
-*/

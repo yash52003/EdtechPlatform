@@ -1,19 +1,19 @@
 const cloudinary = require("cloudinary").v2;
 
-exports.uploadImageToCloudinary = async (file , folder , height , quality) => {
-    const options = {folder};
+exports.uploadImageToCloudinary = async (file, folder, height, quality) => {
+    try {
+        const options = { folder };
+        if (height) {
+            options.height = height;
+        }
+        if (quality) {
+            options.quality = quality;
+        }
+        options.resource_type = "auto";
 
-    //Height and quality is used for the compress 
-    if(height){
-        options.height = height;
+        return await cloudinary.uploader.upload(file.tempFilePath, options);
+    } catch (error) {
+        console.error('Cloudinary upload error:', error);
+        throw new Error('Failed to upload image');
     }
-
-    if(quality){
-        options.quality = quality;
-    }
-
-    options.resource_type = "auto";
-    console.log("OPTIONS", options);
-    return await cloudinary.uploader.upload(file.tempFilePath , options);
-
 };

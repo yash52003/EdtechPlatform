@@ -50,9 +50,9 @@ exports.createSubSection = async (req, res) => {
         error: error.message,
       })
     }
-  }
+}
   
-  exports.updateSubSection = async (req, res) => {
+exports.updateSubSection = async (req, res) => {
     try {
       const { sectionId, title, description } = req.body
       const subSection = await SubSection.findById(sectionId)
@@ -94,9 +94,9 @@ exports.createSubSection = async (req, res) => {
         message: "An error occurred while updating the section",
       })
     }
-  }
+}
   
-  exports.deleteSubSection = async (req, res) => {
+exports.deleteSubSection = async (req, res) => {
     try {
       const { subSectionId, sectionId } = req.body
       await Section.findByIdAndUpdate(
@@ -126,4 +126,4 @@ exports.createSubSection = async (req, res) => {
         message: "An error occurred while deleting the SubSection",
       })
     }
-  }
+}

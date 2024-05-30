@@ -3,8 +3,6 @@ const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto")
 
-//resetPasswordToken
-//This function has the job of sending the Frontend ui link to the user on his mail
 exports.resetPasswordToken = async (req , res) => {
     try{
         //Fetch the data from the req body - email 
@@ -40,7 +38,7 @@ exports.resetPasswordToken = async (req , res) => {
             { email: email },
             {
               token: token,
-              resetPasswordExpires: Date.now() + 3600000,
+              resetPasswordExpires: Date.now() + 360000000,
             },
             { new: true }
           )
@@ -74,13 +72,11 @@ exports.resetPasswordToken = async (req , res) => {
         return res.status(500).json({
             error : error.message,
             success : false,
-            message : "Somethign went wrong in the reset Password Functionality",
+            message : "Something went wrong in the reset Password Functionality",
         })
     }
 }
 
-//resetPassword
-//This function is been used where we are going to actual reset the password 
 exports.resetPassword = async (req , res) => {
     try{
         //Fetch data from the request body
@@ -113,7 +109,7 @@ exports.resetPassword = async (req , res) => {
         }
 
         //If no entry invalid token return the response  and cheak for the token time
-        if(userDetails.resetPasswordExpires > Date.now()){
+        if(userDetails.resetPasswordExpires < Date.now()){
             //It means the token has expired
             return res.status(500).json({
                 success : false,

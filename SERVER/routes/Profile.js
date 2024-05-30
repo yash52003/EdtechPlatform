@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { Auth } = require("../middlewares/Auth")
+const { auth } = require("../middlewares/Auth")
 
 const {
   deleteAccount,

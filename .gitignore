@@ -1,1 +1,3 @@
 ../SERVER/node_modules
+../SERVER/.env
+../SERVER/pakage-lock.json

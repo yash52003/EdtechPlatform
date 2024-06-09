@@ -9,7 +9,7 @@ body {
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
-* {
+*{
   scrollbar-width: auto;
   scrollbar-color: #afb2bf;
 }

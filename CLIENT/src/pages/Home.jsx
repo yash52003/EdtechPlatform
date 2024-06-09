@@ -1,25 +1,21 @@
-// Icons Import
-import { FaArrowRight } from "react-icons/fa"
-import { Link } from "react-router-dom"
-
-// Image and Video Import
+import React from 'react'
+import { Link } from 'react-router-dom';
+import {FaArrowRight} from "react-icons/fa"
+import HighlightText from '../components/core/Homepage/HighlightText';
+import CTAButton from "../components/core/Homepage/Button"
 import Banner from "../assets/Images/banner.mp4"
-// Component Imports
+import CodeBlocks from '../components/core/Homepage/CodeBlocks';
 import Footer from "../components/Common/Footer"
-import ReviewSlider from "../components/Common/ReviewSlider"
-import CTAButton from "../components/core/HomePage/Button"
-import CodeBlocks from "../components/core/HomePage/CodeBlocks"
-import ExploreMore from "../components/core/HomePage/ExploreMore"
-import HighlightText from "../components/core/HomePage/HighlightText"
-import InstructorSection from "../components/core/HomePage/InstructorSection"
-import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
-import TimelineSection from "../components/core/HomePage/Timeline"
+import TimelineSection from '../components/core/Homepage/TimelineSection';
+import LearningLanguageSection from '../components/core/Homepage/LearningLanguageSection';
+import InstructorSection from '../components/core/Homepage/InstructorSection';
 
-function Home() {
+const Home = () => {
   return (
     <div>
-      {/* Section 1 */}
-      <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
+
+    { /*Section1 */ }
+  <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         {/* Become a Instructor Button */}
         <Link to={"/signup"}>
           <div className="group mx-auto mt-16 w-fit rounded-full bg-richblack-800 p-1 font-bold text-richblack-200 drop-shadow-[0_1.5px_rgba(255,255,255,0.25)] transition-all duration-200 hover:scale-95 hover:drop-shadow-none">
@@ -126,72 +122,83 @@ function Home() {
         </div>
 
         {/* Explore Section */}
-        <ExploreMore />
-      </div>
+  </div>
 
-      {/* Section 2 */}
-      <div className="bg-pure-greys-5 text-richblack-700">
-        <div className="homepage_bg h-[320px]">
-          {/* Explore Full Catagory Section */}
-          <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8">
-            <div className="lg:h-[150px]"></div>
-            <div className="flex flex-row gap-7 text-white lg:mt-8">
-              <CTAButton active={true} linkto={"/signup"}>
-                <div className="flex items-center gap-2">
+    { /*Section2 */ }
+  <div className="bg-pure-greys-5 text-richblack-700">
+
+    <div className='homepage_bg h-[333px]'>
+          
+        <div className='w-11/12 max-w-maxContent flex flex-col justify-between items-center gap-5 mx-auto'>
+
+          <div className="h-[150px]">
+          </div>
+
+            <div className="flex flex-row gap-7 text-white">
+
+              <CTAButton className="flex flex-row" active={true} linkto={"/signup"}>
+                <div className="flex  flex-row items-center gap-3">
                   Explore Full Catalog
-                  <FaArrowRight />
+                <FaArrowRight/>
                 </div>
               </CTAButton>
+
               <CTAButton active={false} linkto={"/login"}>
-                Learn More
+                <div>
+                  Learn More
+                </div>
               </CTAButton>
-            </div>
-          </div>
-        </div>
 
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 ">
-          {/* Job that is in Demand - Section 1 */}
-          <div className="mb-10 mt-[-100px] flex flex-col justify-between gap-7 lg:mt-20 lg:flex-row lg:gap-0">
-            <div className="text-4xl font-semibold lg:w-[45%] ">
-              Get the skills you need for a{" "}
-              <HighlightText text={"job that is in demand."} />
             </div>
-            <div className="flex flex-col items-start gap-10 lg:w-[40%]">
-              <div className="text-[16px]">
-                The modern StudyNotion is the dictates its own terms. Today, to
-                be a competitive specialist requires more than professional
-                skills.
+
+
+          </div>
+
+    </div>
+
+    <div className="mx-auto w-[11/12] max-w-maxContent flex flex-col items-center justify-between gap-7">
+      <div className="flex flex-row gap-5 mb-10 mt-[95px]">
+            <div className="text-4xl font-semibold w-[45%]">
+              Get the Skills you need for a
+              <HighlightText text={"Job that is in demand"}/>
+            </div>
+
+            <div className="flex flex-col gap-10 w-[40%] items-start">
+            <div className="text-[16px]">
+              This is a modern studyNotion Platform
+            </div>
+            <CTAButton active={true} linkto={"/signup"}>
+              <div>
+                  Learn More
               </div>
-              <CTAButton active={true} linkto={"/signup"}>
-                <div className="">Learn More</div>
-              </CTAButton>
-            </div>
+            </CTAButton>
           </div>
 
-          {/* Timeline Section - Section 2 */}
-          <TimelineSection />
-
-          {/* Learning Language Section - Section 3 */}
-          <LearningLanguageSection />
-        </div>
       </div>
 
-      {/* Section 3 */}
-      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
-        {/* Become a instructor section */}
-        <InstructorSection />
+      
+    <TimelineSection/>
+    <LearningLanguageSection/>
 
-        {/* Reviws from Other Learner */}
-        <h1 className="text-center text-4xl font-semibold mt-8">
-          Reviews from other learners
-        </h1>
-        <ReviewSlider />
-      </div>
+    </div>
 
-      {/* Footer */}
-      <Footer />
+  </div>
+
+    { /*Section3 */ }
+    <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white">
+          <InstructorSection/>
+          <h2 className="text-center text-4xl font-semibold mt-10">Review from other learners</h2>
+
+          {/* Review Slider */}
+
+          
+    </div>
+
+    { /*Footer */ }
+    <Footer />
+
     </div>
   )
 }
 
-export default Home
+export default Home;

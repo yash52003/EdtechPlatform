@@ -19,6 +19,7 @@ const Resources = [
   "Videos",
   "Workspaces",
 ];
+
 const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
 
@@ -172,7 +173,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">Made with ❤️ CodeHelp © 2023 Studynotion</div>
+          <div className="text-center text-yellow-50">Made with ❤️ Yash Choudhary© 2024 IIT(ISM) Dhanbad</div>
         </div>
       </div>
     </div>

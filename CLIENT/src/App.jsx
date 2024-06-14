@@ -14,6 +14,8 @@ import Contact from './pages/Contact'
 import MyProfile from './components/core/Dashboard/MyProfile'
 import PrivateRoute from './components/core/Auth/PrivateRoute'
 import Dashboard from './pages/Dashboard'
+import Error from './pages/Error'
+
 
 export const App = () => {
   return (
@@ -67,15 +69,16 @@ export const App = () => {
 
           {/* Private Route - for Only Logged in User */}
           <Route
-          path="dashboard"
+          path=""
           element={
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
-          }
-          />
+          }>
+          <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+          </Route>
 
-        <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+        <Route path="*" element={<Error/>}/>
 
     </Routes>
    </div>

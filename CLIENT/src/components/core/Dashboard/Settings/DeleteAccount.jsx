@@ -15,7 +15,7 @@ export default function DeleteAccount() {
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }
-  }
+}
 
   return (
     <>

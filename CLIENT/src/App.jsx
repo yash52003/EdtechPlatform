@@ -15,7 +15,7 @@ import MyProfile from './components/core/Dashboard/MyProfile'
 import PrivateRoute from './components/core/Auth/PrivateRoute'
 import Dashboard from './pages/Dashboard'
 import Error from './pages/Error'
-
+import Settings from './components/core/Dashboard/Settings'
 
 export const App = () => {
   return (
@@ -76,6 +76,8 @@ export const App = () => {
             </PrivateRoute>
           }>
           <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+          <Route path="dashboard/Settings" element={<Settings />} />
+          <Route path="dashboard/settings" element={<Settings />} />
           </Route>
 
         <Route path="*" element={<Error/>}/>

@@ -11,6 +11,9 @@ import UpdatePassword from './pages/UpdatePassword'
 import VerifyEmail from './pages/VerifyEmail'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import MyProfile from './components/core/Dashboard/MyProfile'
+import PrivateRoute from './components/core/Auth/PrivateRoute'
+import Dashboard from './pages/Dashboard'
 
 export const App = () => {
   return (
@@ -61,6 +64,19 @@ export const App = () => {
             </OpenRoute>
           }
         />
+
+          {/* Private Route - for Only Logged in User */}
+          <Route
+          path="dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+          />
+
+        <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+
     </Routes>
    </div>
   )

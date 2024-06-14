@@ -8,7 +8,7 @@ exports.contactUsEmail = (
 ) => {
   return `<!DOCTYPE html>
   <html>
-  
+
   <head>
       <meta charset="UTF-8">
       <title>Contact Form Confirmation</title>
@@ -71,7 +71,7 @@ exports.contactUsEmail = (
       </style>
   
   </head>
-  
+
   <body>
       <div class="container">
           <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
@@ -89,7 +89,7 @@ exports.contactUsEmail = (
               <p>We appreciate your interest and will get back to you shortly. </p>
           </div>
           <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-              out to us at <a href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
+              out to us at <a href="mailto:yashchoudhary52003@gmail.com">info@studynotion.com</a>. We are here to help!</div>
       </div>
   </body>
   

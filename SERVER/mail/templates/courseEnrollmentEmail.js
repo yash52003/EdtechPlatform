@@ -79,7 +79,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
               <a class="cta" href="https://studynotion-edtech-project.vercel.app/dashboard">Go to Dashboard</a>
           </div>
           <div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-                  href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
+                  href="mailto:yashchoudhary52003@gmail.com">info@studynotion.com</a>. We are here to help!</div>
       </div>
   </body>
   

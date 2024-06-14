@@ -130,7 +130,8 @@ exports.categoryPageDetails = async (req , res) => {
 //showAllCategory handler function
 exports.showAllCategories = async (req , res) => {
     try {
-        const allCategorys = await Category.find()
+        const allCategorys = await Category.find({})
+        // console.log(allCategorys);
         res.status(200).json({
           success: true,
           data: allCategorys,

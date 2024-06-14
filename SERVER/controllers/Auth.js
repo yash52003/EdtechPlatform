@@ -8,70 +8,51 @@ const Profile = require("../models/Profile");
 require("dotenv").config();
 
 //SendOTP
-exports.sendOTP = async (req ,res) => {
-    try{
-    // Step1 - Fetch email from the request body
-    const {email} = req.body;
-
-    //Step2 - Cheak wheather the user already exists in the database or not 
-    const existingUser = await User.findOne({email : email});
-
-    //Step3 - If already user exists then return the response
-    if(existingUser){
+exports.sendOTP = async (req, res) => {
+    try {
+      const { email } = req.body
+  
+      // Check if user is already present
+      // Find user with provided email
+      const checkUserPresent = await User.findOne({ email })
+      // to be used in case of signup
+  
+      // If user found with provided email
+      if (checkUserPresent) {
+        // Return 401 Unauthorized status code with error message
         return res.status(401).json({
-            success : false,
-            message : "User already registered",
-        });
-    }
-
-    //Step4 - Generate OTP
-    var otp = otpGenerator.generate(6 , {
-        upperCaseAlphabets: false,
-        lowerCaseAlphabets : false,
-        specialChars : false,
-    }) ;
-
-    //Step 5 - I want the otp to be unique
-    const result = await OTP.findOne({otp : otp});
-
-    console.log("Result is Generate OTP Func");
-    console.log("OTP generated" , otp);
-    console.log("Result" , result);
-
-
-    while(result){
-        otp = otpGenerator.generate(6 , {
-            upperCaseAlphabets: false,
-            // lowerCaseAlphabets : false,
-            // specialChars : false,
-        }) ;
-
-        // result = await OTP.findOne({otp : otp});
-    }
-
-    //Step6 - create the otp object and make its unique entry in the database
-    const otpPayLoad = {email , otp};
-
-    //Create an entry in the database
-    const otpBody = await OTP.create(otpPayLoad);
-    console.log("OTP BODY" , otpBody);
-
-
-    //return response succesful
-    res.status(200).json({
-        success : true,
-        message : "OTP send successful",
-        otp,
-    })
-
-    }catch(error){
-        console.log(error.message);
-        res.status(500).json({
-            success : false,
-            message :  'User already exists',
+          success: false,
+          message: `User is Already Registered`,
         })
+      }
+  
+      var otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      })
+      const result = await OTP.findOne({ otp: otp })
+      console.log("Result is Generate OTP Func")
+      console.log("OTP", otp)
+      console.log("Result", result)
+      while (result) {
+        otp = otpGenerator.generate(6, {
+          upperCaseAlphabets: false,
+        })
+      }
+      const otpPayload = { email, otp }
+      const otpBody = await OTP.create(otpPayload)
+      console.log("OTP Body", otpBody)
+      res.status(200).json({
+        success: true,
+        message: `OTP Sent Successfully`,
+        otp,
+      })
+    } catch (error) {
+      console.log(error.message)
+      return res.status(500).json({ success: false, error: error.message })
     }
-};
+}
 
 //Signup
 exports.signup = async (req , res) => {

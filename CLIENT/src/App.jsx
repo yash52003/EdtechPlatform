@@ -26,7 +26,7 @@ import Error from './pages/Error'
 import Settings from './components/core/Dashboard/Settings'
 import EnrolledCourses from './components/core/Dashboard/EnrolledCourses'
 import Cart from './components/core/Dashboard/Cart'
-
+import AddCourse from './components/core/Dashboard/AddCourse'
 
 
 
@@ -46,7 +46,7 @@ export const App = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
        {/* Open Route - for Only Non Logged in User */}
-       
+
        <Route
           path="login"
           element={
@@ -106,13 +106,13 @@ export const App = () => {
           {/* Route only for Instructors */}
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
-              <Route path="dashboard/instructor" element={<Instructor />} />
-              <Route path="dashboard/my-courses" element={<MyCourses />} />
+              {/* <Route path="dashboard/instructor" element={<Instructor />} /> */}
+              {/* <Route path="dashboard/my-courses" element={<MyCourses />} /> */}
               <Route path="dashboard/add-course" element={<AddCourse />} />
-              <Route
+              {/* <Route
                 path="dashboard/edit-course/:courseId"
                 element={<EditCourse />}
-              />
+              /> */}
             </>
           )}
           {/* Route only for Students */}

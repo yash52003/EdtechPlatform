@@ -60,41 +60,52 @@ exports.updateProfile = async (req, res) => {
 
 //Now lets write down the delete account handler 
 exports.deleteAccount = async (req, res) => {
-    try {
-      const id = req.user.id
-      console.log(id)
-      const user = await User.findById({ _id: id })
+  try {
+      const id = req.user.id;
+      console.log(id);
+
+      const user = await User.findById({ _id: id });
       if (!user) {
-        return res.status(404).json({
-          success: false,
-          message: "User not found",
-        })
+          return res.status(404).json({
+              success: false,
+              message: "User not found",
+          });
       }
-      // Delete Assosiated Profile with the User
+
+      // Delete associated profile with the user
       await Profile.findByIdAndDelete({
-        _id: new mongoose.Types.ObjectId(user.additionalDetails),
-      })
+          _id: new mongoose.Types.ObjectId(user.additionalDetails),
+      });
+
       for (const courseId of user.courses) {
-        await Course.findByIdAndUpdate(
-          courseId,
-          { $pull: { studentsEnroled: id } },
-          { new: true }
-        )
+          await Course.findByIdAndUpdate(
+              courseId,
+              { $pull: { studentsEnrolled: id } },
+              { new: true }
+          );
       }
-      // Now Delete User
-      await User.findByIdAndDelete({ _id: id })
+
+      // Delete user
+      await User.findByIdAndDelete({ _id: id });
+      
+      // Delete course progress
+      await CourseProgress.deleteMany({ userId: id });
+
       res.status(200).json({
-        success: true,
-        message: "User deleted successfully",
-      })
-      await CourseProgress.deleteMany({ userId: id })
-    } catch (error) {
-      console.log(error)
-      res
-        .status(500)
-        .json({ success: false, message: "User Cannot be deleted successfully" })
-    }
-}
+          success: true,
+          message: "User deleted successfully",
+      });
+  } catch (error) {
+      console.log(error);
+      // Ensure this only sends a response if no other response has been sent
+      if (!res.headersSent) {
+          res.status(500).json({ 
+              success: false, 
+              message: "User cannot be deleted successfully" 
+          });
+      }
+  }
+};
 
 //Writing the get handler function for accessing all the details of the user
 exports.getAllUserDetails = async (req, res) => {

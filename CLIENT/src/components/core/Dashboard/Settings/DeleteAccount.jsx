@@ -1,7 +1,6 @@
 import { FiTrash2 } from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
 import { deleteProfile } from "../../../../services/operations/SettingsAPI"
 
 export default function DeleteAccount() {
@@ -9,13 +8,16 @@ export default function DeleteAccount() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  async function handleDeleteAccount() {
+  const handleDeleteAccount = async () => {
     try {
-      dispatch(deleteProfile(token, navigate))
+      await dispatch(deleteProfile(token))
+      // Redirect to home page on successful deletion
+      navigate('/')
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
+      // Handle error (optional: dispatch error action to Redux)
     }
-}
+  }
 
   return (
     <>
@@ -31,7 +33,7 @@ export default function DeleteAccount() {
             <p>Would you like to delete account?</p>
             <p>
               This account may contain Paid Courses. Deleting your account is
-              permanent and will remove all the contain associated with it.
+              permanent and will remove all the content associated with it.
             </p>
           </div>
           <button

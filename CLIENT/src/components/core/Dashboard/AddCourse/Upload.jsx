@@ -15,6 +15,7 @@ export default function Upload({
   video = false,
   viewData = null,
   editData = null,
+  setUploadProgress, // Ensure setUploadProgress is received as a prop
 }) {
   const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
@@ -39,7 +40,6 @@ export default function Upload({
   })
 
   const previewFile = (file) => {
-    // console.log(file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
@@ -49,13 +49,31 @@ export default function Upload({
 
   useEffect(() => {
     register(name, { required: true })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [register])
+  }, [register, name])
 
   useEffect(() => {
     setValue(name, selectedFile)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedFile, setValue])
+  }, [selectedFile, setValue, name])
+
+  useEffect(() => {
+    // Make sure to handle the progress update using setUploadProgress
+    if (selectedFile && setUploadProgress) {
+      const formData = new FormData()
+      formData.append("file", selectedFile)
+
+      const config = {
+        onUploadProgress: (progressEvent) => {
+          const progress = Math.round(
+            (progressEvent.loaded / progressEvent.total) * 100
+          )
+          setUploadProgress(progress)
+        },
+      }
+
+      // Implement your upload logic using Axios or fetch here
+      // Example: axios.post("/upload", formData, config)
+    }
+  }, [selectedFile, setUploadProgress])
 
   return (
     <div className="flex flex-col space-y-2">

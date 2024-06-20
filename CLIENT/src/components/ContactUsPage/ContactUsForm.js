@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 
-import CountryCode from "../../../data/countrycode.json"
-import { apiConnector } from "../../../services/apiConnector"
-import { contactusEndpoint } from "../../../services/apis"
+import CountryCode from "../../data/countrycode.json"
+import { apiConnector } from "../../services/apiConnector"
+import { contactusEndpoint } from "../../services/apis"
 
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false)

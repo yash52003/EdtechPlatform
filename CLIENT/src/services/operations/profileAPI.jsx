@@ -77,7 +77,7 @@ export async function getInstructorData(token) {
     result = response?.data?.courses
   } catch (error) {
     console.log("GET_INSTRUCTOR_DATA_API API ERROR............", error)
-    toast.error("Could Not Get Instructor Data")
+    // toast.error("Could Not Get Instructor Data")
   }
   toast.dismiss(toastId)
   return result

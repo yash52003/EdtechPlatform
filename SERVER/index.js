@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+const events = require('events');
+events.EventEmitter.defaultMaxListeners = 20; 
+
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
 const paymentRoutes = require("./routes/Payments");
@@ -29,6 +32,7 @@ app.use(
         credentials : true,
     })
 );
+
 app.use(
     fileUpload({
         useTempFiles : true,

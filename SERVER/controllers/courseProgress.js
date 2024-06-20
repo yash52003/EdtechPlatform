@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Section = require("../models/Section")
-const SubSection = require("../models/Subsection")
+const SubSection = require("../models/SubSection")
 const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 

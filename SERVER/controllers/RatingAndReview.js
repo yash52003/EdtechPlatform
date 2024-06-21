@@ -11,11 +11,11 @@ exports.createRating = async (req, res) => {
   
       const courseDetails = await Course.findOne({
         _id: courseId,
-        studentsEnroled: { $elemMatch: { $eq: userId } },
+        studentsEnrolled: { $elemMatch: { $eq: userId } },
       })
   
       if (!courseDetails) {
-        return res.status(404).json({
+        return res.status(401).json({
           success: false,
           message: "Student is not enrolled in this course",
         })

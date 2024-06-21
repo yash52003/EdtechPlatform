@@ -23,7 +23,7 @@ function CourseDetails() {
   const { paymentLoading } = useSelector((state) => state.course)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  
   // Getting courseId from url parameter
   const { courseId } = useParams()
   // console.log(`course id: ${courseId}`)
@@ -56,13 +56,13 @@ function CourseDetails() {
 
   // // Collapse all
   // const [collapse, setCollapse] = useState("")
-  const [isActive, setIsActive] = useState(Array(0))
+  const [isActive, setIsActive] = useState([])
   const handleActive = (id) => {
     // console.log("called", id)
-    setIsActive(
-      !isActive.includes(id)
-        ? isActive.concat([id])
-        : isActive.filter((e) => e != id)
+    setIsActive((prevIsActive) =>
+      prevIsActive.includes(id)
+        ? prevIsActive.filter((e) => e !== id)
+        : [...prevIsActive, id]
     )
   }
 
@@ -97,7 +97,7 @@ function CourseDetails() {
     courseContent,
     ratingAndReviews,
     instructor,
-    studentsEnroled,
+    studentsEnrolled,
     createdAt,
   } = response.data?.courseDetails
 
@@ -152,11 +152,11 @@ function CourseDetails() {
                 <span className="text-yellow-25">{avgReviewCount}</span>
                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
                 <span>{`(${ratingAndReviews.length} reviews)`}</span>
-                <span>{`${studentsEnroled.length} students enrolled`}</span>
+                <span>{`${studentsEnrolled.length} students enrolled`}</span>
               </div>
               <div>
                 <p className="">
-                  Created By {`${instructor.firstName} ${instructor.lastName}`}
+                  Created By {instructor ? `${instructor.firstName} ${instructor.lastName}` : "Unknown"}
                 </p>
               </div>
               <div className="flex flex-wrap gap-5 text-lg">
@@ -243,14 +243,14 @@ function CourseDetails() {
               <div className="flex items-center gap-4 py-4">
                 <img
                   src={
-                    instructor.image
+                    instructor && instructor.image
                       ? instructor.image
-                      : `https://api.dicebear.com/5.x/initials/svg?seed=${instructor.firstName} ${instructor.lastName}`
+                      : `https://api.dicebear.com/5.x/initials/svg?seed=${instructor ? instructor.firstName : "Unknown"} ${instructor ? instructor.lastName : ""}`
                   }
                   alt="Author"
                   className="h-14 w-14 rounded-full object-cover"
                 />
-                <p className="text-lg">{`${instructor.firstName} ${instructor.lastName}`}</p>
+                <p className="text-lg">{instructor ? `${instructor.firstName} ${instructor.lastName}` : "Unknown"}</p>
               </div>
               <p className="text-richblack-50">
                 {instructor?.additionalDetails?.about}

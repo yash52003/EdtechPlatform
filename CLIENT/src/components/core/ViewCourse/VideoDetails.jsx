@@ -24,28 +24,35 @@ const VideoDetails = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    let isMounted = true // flag to indicate component is mounted
+
+    const fetchVideoData = async () => {
       if (!courseSectionData.length) return
       if (!courseId && !sectionId && !subSectionId) {
         navigate(`/dashboard/enrolled-courses`)
       } else {
-        // console.log("courseSectionData", courseSectionData)
         const filteredData = courseSectionData.filter(
           (course) => course._id === sectionId
         )
-        // console.log("filteredData", filteredData)
         const filteredVideoData = filteredData?.[0]?.subSection.filter(
           (data) => data._id === subSectionId
         )
-        // console.log("filteredVideoData", filteredVideoData)
-        setVideoData(filteredVideoData[0])
-        setPreviewSource(courseEntireData.thumbnail)
-        setVideoEnded(false)
-      }
-    })()
-  }, [courseSectionData, courseEntireData, location.pathname])
 
-  // check if the lecture is the first video of the course
+        if (isMounted) { // only update state if component is still mounted
+          setVideoData(filteredVideoData[0])
+          setPreviewSource(courseEntireData.thumbnail)
+          setVideoEnded(false)
+        }
+      }
+    }
+
+    fetchVideoData()
+
+    return () => {
+      isMounted = false // cleanup function to set flag to false
+    }
+  }, [courseSectionData, courseEntireData, location.pathname, navigate, courseId, sectionId, subSectionId])
+
   const isFirstVideo = () => {
     const currentSectionIndx = courseSectionData.findIndex(
       (data) => data._id === sectionId
@@ -55,17 +62,10 @@ const VideoDetails = () => {
       currentSectionIndx
     ].subSection.findIndex((data) => data._id === subSectionId)
 
-    if (currentSectionIndx === 0 && currentSubSectionIndx === 0) {
-      return true
-    } else {
-      return false
-    }
+    return currentSectionIndx === 0 && currentSubSectionIndx === 0
   }
 
-  // go to the next video
   const goToNextVideo = () => {
-    // console.log(courseSectionData)
-
     const currentSectionIndx = courseSectionData.findIndex(
       (data) => data._id === sectionId
     )
@@ -76,8 +76,6 @@ const VideoDetails = () => {
     const currentSubSectionIndx = courseSectionData[
       currentSectionIndx
     ].subSection.findIndex((data) => data._id === subSectionId)
-
-    // console.log("no of subsections", noOfSubsections)
 
     if (currentSubSectionIndx !== noOfSubsections - 1) {
       const nextSubSectionId =
@@ -97,7 +95,6 @@ const VideoDetails = () => {
     }
   }
 
-  // check if the lecture is the last video of the course
   const isLastVideo = () => {
     const currentSectionIndx = courseSectionData.findIndex(
       (data) => data._id === sectionId
@@ -110,20 +107,13 @@ const VideoDetails = () => {
       currentSectionIndx
     ].subSection.findIndex((data) => data._id === subSectionId)
 
-    if (
+    return (
       currentSectionIndx === courseSectionData.length - 1 &&
       currentSubSectionIndx === noOfSubsections - 1
-    ) {
-      return true
-    } else {
-      return false
-    }
+    )
   }
 
-  // go to the previous video
   const goToPrevVideo = () => {
-    // console.log(courseSectionData)
-
     const currentSectionIndx = courseSectionData.findIndex(
       (data) => data._id === sectionId
     )
@@ -183,7 +173,6 @@ const VideoDetails = () => {
           src={videoData?.videoUrl}
         >
           <BigPlayButton position="center" />
-          {/* Render When Video Ends */}
           {videoEnded && (
             <div
               style={{
@@ -204,7 +193,6 @@ const VideoDetails = () => {
                 disabled={loading}
                 onclick={() => {
                   if (playerRef?.current) {
-                    // set the current time of the video to 0
                     playerRef?.current?.seek(0)
                     setVideoEnded(false)
                   }
@@ -236,7 +224,6 @@ const VideoDetails = () => {
           )}
         </Player>
       )}
-
       <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
       <p className="pt-2 pb-6">{videoData?.description}</p>
     </div>
@@ -244,4 +231,3 @@ const VideoDetails = () => {
 }
 
 export default VideoDetails
-// video

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const events = require('events');
-events.EventEmitter.defaultMaxListeners = 20; 
+// events.EventEmitter.defaultMaxListeners = 20; 
 
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");

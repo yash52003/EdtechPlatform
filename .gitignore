@@ -1,3 +1,8 @@
-../SERVER/node_modules
-../SERVER/.env
-../SERVER/pakage-lock.json
+# Ignore node_modules directory
+/SERVER/node_modules
+
+# Ignore .env file
+/SERVER/.env
+
+# Ignore package-lock.json file
+/SERVER/package-lock.json

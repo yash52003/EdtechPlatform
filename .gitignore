@@ -1,6 +1,6 @@
 # Ignore node_modules directory
 /SERVER/node_modules
-
+/CLIENT/node_modules
 # Ignore .env file
 /SERVER/.env
 

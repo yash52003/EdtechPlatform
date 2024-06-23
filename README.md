@@ -82,22 +82,17 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
 </div>
 
 
-### Different Dashboards for multiple roles 
+### Admin Dashboard
 <div align="center">
   <table>
     <tr>
-    <th align="center">User Dashboard</th>
-      </tr>
-    <tr>
       <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboard/profile-user.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Instructor_Courses.png" alt="Landing page" style="width: 300px;"/>
         <br />
-        <em>Figure 1.1: User Profile</em>
       </td>
       <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboard/submission.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Instructor-Dashboard.png" alt="Landing register" style="width: 300px;"/>
         <br />
-        <em>Figure 1.2: User Submissions</em>
       </td>
     </tr>
   </table>
@@ -105,32 +100,25 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
 
 <div align="center">
   <table>
-     <tr>
-    <th align="center">Admin Dashboard</th>
-      </tr>
    <tr>
      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/problems.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/AddCourse1stModal.png" alt="Landing register" style="width: 300px;"/>
         <br />
-        <em>Figure 2.1: Admin Problems</em>
       </td>
       <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/create.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/AddCourse1stModal.png" alt="Landing register" style="width: 300px;"/>
         <br />
-        <em>Figure 2.2: Admin Create Problem</em>
       </td>
     </tr>
     <tr>
            <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/edit.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/AddCourseModal3.png" alt="Landing register" style="width: 300px;"/>
         <br />
-        <em>Figure 2.3: Admin Edit Problem</em>
       </td>
           </td>
            <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/submissions.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <img src="" alt="Landing register" style="width: 300px;"/>
         <br />
-        <em>Figure 2.4: Admin Submissions of Problem</em>
       </td>
     </tr>
   </table>

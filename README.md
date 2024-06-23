@@ -140,6 +140,7 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
   </table>
 </div>
 
+### MISC
 <div align="center">
   <table>
    <tr>
@@ -165,68 +166,40 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
     </tr>
   </table>
 </div>
-
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/vs-dark.png?raw=true" alt="Landing page" style="width: 300px;"/>
-        <br />
-        <em>Figure 1: vs-dark</em>
-      </td>
-      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/rose.png?raw=true" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Figure 2: cd-rose (self defined)</em>
-      </td>
-    </tr>
-        <tr>
-     <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/hc-black.png?raw=true" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Figure 3: hc-black</em>
-      </td>
-      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/game.png?raw=true" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Figure 4: cd-game (self defined)</em>
-      </td>
-    </tr>
-  </table>
-</div>
+   
 
 ### User Dashboard
-
-### Highly Responsive UI
 <div align="center">
   <table>
     <tr>
       <td align="center">
-        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/userProfile.png" alt="Landing page" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Cart.png" alt="Landing page" style="width: 200px;"/>
         <br />
       </td>
          <td align="center">
-        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/paymentGateway.png" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/MyCourses.png" alt="Landing register" style="width: 200px;"/>
         <br />
       </td>
       <td align="center">
-        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/UserDemographics.png" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/CourseDescription.png" alt="Landing register" style="width: 200px;"/>
         <br />
       </td>
     </tr>
         <tr>
      <td align="center">
-        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/TopCourses.png" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/CoursePage.png" alt="Landing register" style="width: 200px;"/>
         <br />
+        <em>Figure 4.1: Admin dashboard</em>
       </td>
       <td align="center">
         <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/CoursesPage.png" alt="Landing register" style="width: 200px;"/>
         <br />
+        <em>igure 4.2: Admin dashboard</em>
       </td>
            <td align="center">
-        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/SubsectionVideo.png" alt="Landing register" style="width: 200px;"/>
+        <img src="" alt="Landing register" style="width: 200px;"/>
         <br />
+        <em>igure 5: Problem Page</em>
       </td>
     </tr>
   </table>

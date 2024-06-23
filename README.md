@@ -4,6 +4,240 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
 
 ![StudyNotion Logo](https://res.cloudinary.com/dvpulu3cc/image/upload/v1702489710/Screenshot_2023-12-13_231558_dwyhv3.png)
 
+
+## 🎨 Platform Visuals
+### Homepage
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/Light/landing.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <br />
+        <em>Figure 1: Landing page</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/Light/problems.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2: Problems Page</em>
+      </td>
+    </tr>
+        <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/Light/problem-i.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <br />
+        <em>Figure 3.1: Problems page</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/Light/tags.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 3.2: Problems Tag Filter</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### Multi Theme Support Website (Dark Theme)
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/about.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <br />
+        <em>Figure 1: About Page</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/problem-n.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2: Problem page</em>
+      </td>
+    </tr>
+        <tr>
+     <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/login.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 3.1: Login</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/register.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 3.2: Register</em>
+      </td>
+    </tr>
+     </tr>
+        <tr>
+     <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/select-tag.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 4: Tag Filter</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/problem-all-submision.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 5: Problem all Submissions</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+### Different Dashboards for multiple roles 
+<div align="center">
+  <table>
+    <tr>
+    <th align="center">User Dashboard</th>
+      </tr>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboard/profile-user.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <br />
+        <em>Figure 1.1: User Profile</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboard/submission.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 1.2: User Submissions</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+     <tr>
+    <th align="center">Admin Dashboard</th>
+      </tr>
+   <tr>
+     <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/problems.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2.1: Admin Problems</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/create.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2.2: Admin Create Problem</em>
+      </td>
+    </tr>
+    <tr>
+           <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/edit.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2.3: Admin Edit Problem</em>
+      </td>
+          </td>
+           <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/dark/dashboardadmin/submissions.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2.4: Admin Submissions of Problem</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+### Submissions in multiple Languages
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/c.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <br />
+        <em>Figure 1: C</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/cpp.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2: C++</em>
+      </td>
+    </tr>
+        <tr>
+     <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/java.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 3: java</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/python.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 4: Python</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+    
+### Supports multiple theme in code editor
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/vs-dark.png?raw=true" alt="Landing page" style="width: 300px;"/>
+        <br />
+        <em>Figure 1: vs-dark</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/rose.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 2: cd-rose (self defined)</em>
+      </td>
+    </tr>
+        <tr>
+     <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/hc-black.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 3: hc-black</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/theme/game.png?raw=true" alt="Landing register" style="width: 300px;"/>
+        <br />
+        <em>Figure 4: cd-game (self defined)</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+### Highly responsive UI
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/landing.png?raw=true" alt="Landing page" style="width: 200px;"/>
+        <br />
+        <em>Figure 1: Landing</em>
+      </td>
+         <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/sidenav.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <br />
+        <em>Figure 2: Side Nav</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/problems.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <br />
+        <em>Figure 3: Problems Page</em>
+      </td>
+    </tr>
+        <tr>
+     <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/dashboard/admin-problem.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <br />
+        <em>Figure 4.1: Admin dashboard</em>
+      </td>
+      <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/dashboard/admin-submission.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <br />
+        <em>igure 4.2: Admin dashboard</em>
+      </td>
+           <td align="center">
+        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/dark/problem.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <br />
+        <em>igure 5: Problem Page</em>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
 ## DESCRIPTION
 
 The StudyNotion project is designed to streamline the educational process. It allows users to access a variety of educational materials, collaborate on projects, and interact with educators, enhancing the learning experience. StudyNotion employs a monolithic architecture and leverages a tech stack involving React.js, Node.js, Express.js, MongoDB, Cloudinary, and Tailwind CSS.

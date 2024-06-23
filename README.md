@@ -20,15 +20,18 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
       </td>
     </tr>
         <tr>
-      <td align="center">
-        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Homepage-3.png" alt="Landing page" style="width: 300px;"/>
+     <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Homepage-3.png" alt="Landing register" style="width: 300px;"/>
         <br />
       </td>
       <td align="center">
         <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Homepage-4.png" alt="Landing register" style="width: 300px;"/>
         <br />
       </td>
-      <td align="center">
+    </tr>
+     </tr>
+        <tr>
+     <td align="center">
         <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Homepage-5.png" alt="Landing register" style="width: 300px;"/>
         <br />
       </td>
@@ -39,6 +42,7 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
     </tr>
   </table>
 </div>
+
 
 ### Multi Theme Support Website (Dark Theme)
 <div align="center">

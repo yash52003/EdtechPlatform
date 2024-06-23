@@ -82,6 +82,48 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
 </div>
 
 
+### Auth Functionality
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Login_page.png" alt="Landing page" style="width: 300px;"/>
+        <br />
+      </td>
+      <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/Logout.png" alt="Landing register" style="width: 300px;"/>
+        <br />
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+   <tr>
+     <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/SignupPage.png" alt="Landing register" style="width: 300px;"/>
+        <br />
+      </td>
+      <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/MailingFunctionality.png" alt="Landing register" style="width: 300px;"/>
+        <br />
+      </td>
+    </tr>
+    <tr>
+           <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/OTP.png" alt="Landing register" style="width: 300px;"/>
+        <br />
+      </td>
+          </td>
+           <td align="center">
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/ChangePassword.png" alt="Landing register" style="width: 300px;"/>
+        <br />
+      </td>
+    </tr>
+  </table>
+</div>
+
 ### Admin Dashboard
 <div align="center">
   <table>
@@ -117,7 +159,7 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
       </td>
           </td>
            <td align="center">
-        <img src="" alt="Landing register" style="width: 300px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/UserDemographics.png" alt="Landing register" style="width: 300px;"/>
         <br />
       </td>
     </tr>
@@ -125,38 +167,6 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
 </div>
 
 
-### Submissions in multiple Languages
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/c.png?raw=true" alt="Landing page" style="width: 300px;"/>
-        <br />
-        <em>Figure 1: C</em>
-      </td>
-      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/cpp.png?raw=true" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Figure 2: C++</em>
-      </td>
-    </tr>
-        <tr>
-     <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/java.png?raw=true" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Figure 3: java</em>
-      </td>
-      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/xl/lang/python.png?raw=true" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Figure 4: Python</em>
-      </td>
-    </tr>
-  </table>
-</div>
-
-    
-### Supports multiple theme in code editor
 <div align="center">
   <table>
     <tr>
@@ -186,41 +196,37 @@ StudyNotion is a comprehensive educational platform aimed at providing a seamles
   </table>
 </div>
 
-### Highly responsive UI
+### User Dashboard
+
+### Highly Responsive UI
 <div align="center">
   <table>
     <tr>
       <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/landing.png?raw=true" alt="Landing page" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/userProfile.png" alt="Landing page" style="width: 200px;"/>
         <br />
-        <em>Figure 1: Landing</em>
       </td>
          <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/sidenav.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/paymentGateway.png" alt="Landing register" style="width: 200px;"/>
         <br />
-        <em>Figure 2: Side Nav</em>
       </td>
       <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/problems.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/UserDemographics.png" alt="Landing register" style="width: 200px;"/>
         <br />
-        <em>Figure 3: Problems Page</em>
       </td>
     </tr>
         <tr>
      <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/dashboard/admin-problem.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/TopCourses.png" alt="Landing register" style="width: 200px;"/>
         <br />
-        <em>Figure 4.1: Admin dashboard</em>
       </td>
       <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/dashboard/admin-submission.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/CoursesPage.png" alt="Landing register" style="width: 200px;"/>
         <br />
-        <em>igure 4.2: Admin dashboard</em>
       </td>
            <td align="center">
-        <img src="https://github.com/DeveHk/OJ-Project-MERN/blob/main/Assets/OJ/sm/dark/problem.png?raw=true" alt="Landing register" style="width: 200px;"/>
+        <img src="https://github.com/yash52003/EdtechPlatform/blob/master/assets/SubsectionVideo.png" alt="Landing register" style="width: 200px;"/>
         <br />
-        <em>igure 5: Problem Page</em>
       </td>
     </tr>
   </table>
